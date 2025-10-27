@@ -1,4 +1,8 @@
-
+/**
+ * this class is the node for the abstract syntax tree 
+ * this class will be used as the abstract syntax tree
+ * @author Gabriel Lacey
+ */
 import java.util.Iterator;
 public class Node implements Comparable<Node>{
     public int depth;
@@ -7,16 +11,29 @@ public class Node implements Comparable<Node>{
     public Node parent = null;
     public Token data;
     public NodeType type;
-    public Node(ArrayList<Node> branches, Token data, int depth, int index, NodeType type) {
-        this.branches = branches;
+/**
+ * constructor
+ * @param data the token the node refers to
+ * @param type the category of node
+ */
+    public Node(Token data, NodeType type) {
         this.data = data;
-        this.depth = depth;
-        this.index = index;
         this.type = type;
     }
-    public void makeChild(Node in){}
+    /**
+     * modifies data of both the input and this to make in a well formed child of this
+     * @param in node to be made into a child of this
+     */
+    public void makeChild(Node in){
+        //TODO implement
+    }
+
     @Override
-    public String toString(){
+    /**
+     * 
+     * @return a string representation of itself and its subtree 
+     */
+     public String toString(){
         String out = "";
         for(int i = 0; i < depth; i++){
             out += "    ";
@@ -28,6 +45,10 @@ public class Node implements Comparable<Node>{
         }
         return out;
     }
+    /**
+     * counts the nodes in its tree
+     * @return number of nodes in its tree
+     */
     @SuppressWarnings("empty-statement")
     public int count(){
         int out = 1;
@@ -38,6 +59,9 @@ public class Node implements Comparable<Node>{
         return out;
     }
 
+    /**
+     * compares the line the token data is at
+     */
     @Override
     public int compareTo(Node o) {
         /*

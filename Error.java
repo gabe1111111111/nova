@@ -1,3 +1,8 @@
+/**
+ * errors will be handles by return values instead of thrown errors
+ * this is an enum of all errors in the project
+ * @author Gabriel Lacey
+ */
 public enum Error {
     __NO_ERROR__,
     __FILE_NOT_FOUND_EXCEPTION__,

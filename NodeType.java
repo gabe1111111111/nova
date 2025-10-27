@@ -1,3 +1,7 @@
+/**
+ * this enum is for the categories of nodes
+ * @author Gabriel Lacey
+ */
 public enum NodeType{
     File,
     MethodCall,

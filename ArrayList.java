@@ -1,5 +1,9 @@
 import java.util.Iterator;
-
+/**
+ * this class emulates the java ArrayList class.
+ * only the necessary functions are implemented
+ * @author Gabriel Lacey
+ */
 public class ArrayList<T> implements Iterable<T> {
     private T[] data;
     public int size;
