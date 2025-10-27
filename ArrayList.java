@@ -48,6 +48,7 @@ public class ArrayList<T> implements Iterable<T> {
    /**
     * removes null objects from visible part of the array
     */
+    @SuppressWarnings("unchecked")
     public void clean(){
         T[] temp = (T[])new Object[size];
         int newSize = size;
