@@ -4,8 +4,8 @@ public enum NodeType{
     Name,
     CodeBlock,
     DataType,
-    AccessModifyers,
-    paramiter,
+    AccessModifiers,
+    parameter,
     variable,
     Expression,
 }
