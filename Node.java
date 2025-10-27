@@ -25,7 +25,10 @@ public class Node implements Comparable<Node>{
      * @param in node to be made into a child of this
      */
     public void makeChild(Node in){
-        //TODO implement
+        in.depth = depth +1;
+        in.index = branches.size;
+        in.parent = this;
+        this.branches.add(in);
     }
 
     @Override
