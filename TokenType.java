@@ -1,5 +1,5 @@
 public enum TokenType {
-     whitespace,
+    whitespace,
     alphabetical,
     numeric,
     special,
