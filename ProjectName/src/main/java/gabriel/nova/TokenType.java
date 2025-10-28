@@ -1,5 +1,5 @@
 /**
- *  this is an enum for categories of tokens
+ *  thi is an enum for categories of tokens
  *  @author Gabriel Lacey
  */
 public enum TokenType {
