@@ -1,8 +1,9 @@
+package gabriel.nova;
 /**
  * this will hold test cases for various parts of the project
  * @author Gabriel Lacey
  */
-import NOVA.ArrayList;
+
 public class Tests {
     ArrayList<String>
     public static void main(String[] args) {

@@ -1,3 +1,4 @@
+package gabriel.nova;
 /**
  * this class handles the whole compilation process 
  * @author Gabriel Lacey

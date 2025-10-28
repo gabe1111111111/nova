@@ -1,3 +1,4 @@
+package gabriel.nova;
 /**
  * this enum is for the categories of nodes
  * @author Gabriel Lacey

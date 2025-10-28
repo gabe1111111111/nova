@@ -1,3 +1,4 @@
+package gabriel.nova;
 /**
  * errors will be handles by return values instead of thrown errors
  * this is an enum of all errors in the project

@@ -1,5 +1,6 @@
+package gabriel.nova;
 /**
- *  thi is an enum for categories of tokens
+ *  this is an enum for categories of tokens
  *  @author Gabriel Lacey
  */
 public enum TokenType {

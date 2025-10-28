@@ -1,3 +1,4 @@
+package gabriel.nova;
 /**
  * this class is for tokens creates by the lexical analysis
  * @author Gabriel Lacey   

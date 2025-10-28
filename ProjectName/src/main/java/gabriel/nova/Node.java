@@ -1,3 +1,4 @@
+package gabriel.nova;
 /**
  * this class is the node for the abstract syntax tree 
  * this class will be used as the abstract syntax tree
