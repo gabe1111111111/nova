@@ -101,7 +101,7 @@ public class ArrayList<T> implements Iterable<T> {
     }
     /**
      * 
-     * @return number of elements stored
+     * @return the number of elements stored
      */
     public int size(){
         return size;
