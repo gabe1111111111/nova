@@ -8,7 +8,16 @@ import java.util.Iterator;
  */
 public class ArrayList<T> implements Iterable<T> {
     private T[] data;
-    public int size;
+    private  int size;
+    /**
+     * constructor initializes data and size
+     */
+    @SuppressWarnings("unchecked")
+    public ArrayList() {
+    data = (T[]) new Object[1];
+    size = 0;
+    }
+    
     /**
      * adds addend to the array
      * @param addend what is getting added to the array
@@ -90,5 +99,11 @@ public class ArrayList<T> implements Iterable<T> {
     
         
     }
-    
+    /**
+     * 
+     * @return number of elements stored
+     */
+    public int size(){
+        return size;
+    }
 }
