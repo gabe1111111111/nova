@@ -27,7 +27,7 @@ public class Node implements Comparable<Node>{
      */
     public void makeChild(Node in){
         in.depth = depth +1;
-        in.index = branches.size;
+        in.index = branches.size();
         in.parent = this;
         this.branches.add(in);
     }

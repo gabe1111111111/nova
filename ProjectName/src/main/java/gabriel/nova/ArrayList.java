@@ -24,8 +24,8 @@ public class ArrayList<T> implements Iterable<T> {
      */
     public void add(T addend){
         ensureCapacity(size+1);
-        size++;
         data[size] = addend;
+        size++;
     }
     /**
      * if the data length is not already at least as long as the length
@@ -42,6 +42,7 @@ public class ArrayList<T> implements Iterable<T> {
         for(int i = 0; i < size; i++){
             temp[i] = data[i];
         }  
+
         data = temp;
     }
     /**
@@ -66,17 +67,17 @@ public class ArrayList<T> implements Iterable<T> {
     @SuppressWarnings("unchecked")
     public void clean(){
         T[] temp = (T[])new Object[size];
-        int newSize = size;
+        int newSize = 0;
         for(int i = 0; i < size; i++){
-            if(data[i] != null) temp[i] = data[i];
-            else newSize--;
+            if(data[i] != null) temp[newSize++] = data[i];
+            
         
         }  
         size = newSize;
         data = temp;
     }
     private class ArrayListIterator<E> implements Iterator<E>{
-        private int current;
+        private int current = -1;
         @Override
         public boolean hasNext() {
             // TO DO Auto-generated method stub
