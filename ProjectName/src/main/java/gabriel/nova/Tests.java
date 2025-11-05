@@ -14,7 +14,6 @@ public class Tests {
             System.out.println(i);
         }
         System.out.println(compiler.loadProgram("doesNotExist.txt"));
-        System.out.println(compiler.loadProgram("ProjectName\\test.bin"));
     }
 
 }
