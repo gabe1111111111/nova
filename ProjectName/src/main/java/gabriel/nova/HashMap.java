@@ -12,9 +12,12 @@ public class HashMap<T> {
         return data[target.hashCode() % dataSize].contains(target);
     }
     public void add (T addend){
-
+        ArrayList<T> location = data[addend.hashCode() % dataSize];
+        if(location == null) location = new ArrayList<>();
+        if(!location.contains(addend))location.add(addend);
+        size++;
+        if(size >= dataSize) resize();
     }
     private void resize(){
-
     }
 }
