@@ -28,7 +28,10 @@ public ArrayList<String> sourceCode;
             }
         return Error.__NO_ERROR__;
     }
-    public Error preProcessor(){return Error.__NO_ERROR__;}
+    public Error preProcessor(){
+        
+        return Error.__NO_ERROR__;
+    }
     public Error lexer(){return Error.__NO_ERROR__;}
     public Error parser(){return Error.__NO_ERROR__;}
     public Error codeGeneration(){return Error.__NO_ERROR__;}
