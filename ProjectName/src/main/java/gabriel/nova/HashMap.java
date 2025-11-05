@@ -18,14 +18,19 @@ public class HashMap<T> {
         this.size = 0;
     }
     public boolean  contains(T target){
-        if(data[target.hashCode() % dataSize] == null)return false;
-        return data[target.hashCode() % dataSize].contains(target);
+        int index = Math.absoluteValue(target.hashCode() % dataSize);
+        if(data[index] == null)return false;
+        return data[index].contains(target);
     }
     public void add (T addend){
-        ArrayList<T> location = data[addend.hashCode() % dataSize];
+        ArrayList<T> location = data[Math.absoluteValue(addend.hashCode() % dataSize)];
         if(location == null) location = new ArrayList<>();
-        if(!location.contains(addend))location.add(addend);
-        size++;
+        if(!location.contains(addend)){
+            location.add(addend);
+            size++;
+        }
+        
+        data[Math.absoluteValue(addend.hashCode() % dataSize)] = location;
         if(size >= dataSize) resize();
     }
     private void resize(){
@@ -39,4 +44,5 @@ public class HashMap<T> {
         data = newMap.data;
         dataSize *= 10;
     }
+
 }
