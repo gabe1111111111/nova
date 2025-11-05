@@ -1,11 +1,17 @@
 package gabriel.nova;
 
 public class HashMap<T> {
-    public T[] data;
+    public ArrayList<T>[] data;
+    public int dataSize;
     public int size;
 
     public HashMap() {
     }
-    public boolean  contains(T target){return false;}
+    public boolean  contains(T target){
+        return data[target.hashCode() % dataSize].contains(target);
+    }
     public void add (T addend){}
+    private void resize(){
+
+    }
 }
