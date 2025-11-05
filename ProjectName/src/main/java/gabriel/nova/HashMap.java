@@ -5,10 +5,17 @@ public class HashMap<T> {
     public int dataSize;
     public int size;
 
+    @SuppressWarnings("unchecked")
     public HashMap() {
+        data = (ArrayList<T>[])new ArrayList<?>[1000];
+        dataSize = 1000;
+        size = 0;
     }
+    @SuppressWarnings("unchecked")
     private HashMap(int size){
-
+        data = (ArrayList<T>[])new ArrayList<?>[size];
+        dataSize = size;
+        this.size = 0;
     }
     public boolean  contains(T target){
         if(data[target.hashCode() % dataSize] == null)return false;
