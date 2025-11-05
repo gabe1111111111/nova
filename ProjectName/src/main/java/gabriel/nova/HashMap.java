@@ -7,6 +7,9 @@ public class HashMap<T> {
 
     public HashMap() {
     }
+    private HashMap(int size){
+
+    }
     public boolean  contains(T target){
         if(data[target.hashCode() % dataSize] == null)return false;
         return data[target.hashCode() % dataSize].contains(target);
@@ -19,5 +22,14 @@ public class HashMap<T> {
         if(size >= dataSize) resize();
     }
     private void resize(){
+        HashMap<T> newMap = new HashMap<>(dataSize * 10);
+        for(ArrayList<T> i : data){
+            if(i == null) continue;
+            for(T j : i){
+                newMap.add(j);
+            }
+        }
+        data = newMap.data;
+        dataSize *= 10;
     }
 }
