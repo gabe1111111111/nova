@@ -76,6 +76,15 @@ public class ArrayList<T> implements Iterable<T> {
         size = newSize;
         data = temp;
     }
+    /**
+     * 
+     * @param target what it is checking to contain
+     * @return true if the array contains the target
+     */
+    public boolean contains(T target){
+        for(T i : data) if(i == target) return true;
+        return false;
+    }
     private class ArrayListIterator<E> implements Iterator<E>{
         private int current = -1;
         @Override
