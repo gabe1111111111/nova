@@ -28,11 +28,20 @@ public ArrayList<String> sourceCode;
             }
         return Error.__NO_ERROR__;
     }
-    public Error preProcessor(){
-        
+    public Error preProcessor(){return Error.__NO_ERROR__;}
+    public Error lexer(){
+        tokenize();
+        identifyTokens();
+        clean();
+        combineStrings();
+        combineOperators();
         return Error.__NO_ERROR__;
     }
-    public Error lexer(){return Error.__NO_ERROR__;}
+    private void tokenize(){}
+    private void identifyTokens(){}
+    private void clean(){}
+    private void combineStrings(){}
+    private void combineOperators(){}
     public Error parser(){return Error.__NO_ERROR__;}
     public Error codeGeneration(){return Error.__NO_ERROR__;}
     public Error flowChart(){return Error.__NO_ERROR__;}
