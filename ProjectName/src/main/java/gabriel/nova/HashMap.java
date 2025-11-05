@@ -8,9 +8,12 @@ public class HashMap<T> {
     public HashMap() {
     }
     public boolean  contains(T target){
+        if(data[target.hashCode() % dataSize] == null)return false;
         return data[target.hashCode() % dataSize].contains(target);
     }
-    public void add (T addend){}
+    public void add (T addend){
+
+    }
     private void resize(){
 
     }
