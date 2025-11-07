@@ -11,6 +11,15 @@ public class HashMap<T> {
         dataSize = 1000;
         size = 0;
     }
+    @SuppressWarnings({"unchecked", "OverridableMethodCallInConstructor"})
+    public HashMap(T ... in){
+        data = (ArrayList<T>[])new ArrayList<?>[1000];
+        dataSize = 1000;
+        size = 0;
+        for(T i : in){
+            this.add(i);
+        }
+    }
     @SuppressWarnings("unchecked")
     private HashMap(int size){
         data = (ArrayList<T>[])new ArrayList<?>[size];
