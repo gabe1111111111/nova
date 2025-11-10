@@ -16,10 +16,14 @@ public class Math {
     public static boolean isLower(char in){
         return lowerCase.contains(in);
     }
+    public static boolean isAlpha(char in){
+        return isLower(in) || isUpper(in);
+    }
     public static boolean isDigit(char in){
         return digits.contains(in);
     }
     public static boolean isSpecial(char in){
         return special.contains(in);
     }
+    public static char charAt(String in, int index){return in.charAt(index);}
 }
