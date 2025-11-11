@@ -52,6 +52,7 @@ public class ArrayList<T> implements Iterable<T> {
      * @throws IndexOutOfBoundsException if location >= size of the array
      */
     public T get(int location)throws IndexOutOfBoundsException{
+        
         if(location >= size) throw new IndexOutOfBoundsException();
         return data[location];
     }
@@ -82,9 +83,12 @@ public class ArrayList<T> implements Iterable<T> {
      * @return true if the array contains the target
      */
     public boolean contains(T target){
+        int index = 0;
         for(T i : data){
+            if(index >= size) break;
             if(i == target) return true;
             if(i.equals(target)) return true;
+            index ++;
         }
         return false;
     }
@@ -125,6 +129,7 @@ public class ArrayList<T> implements Iterable<T> {
      *@param index where to replace
      */
     public void replace(T addend, int index){
+        if(index >= size)throw new IndexOutOfBoundsException();
         data[index] = addend;
     }
 }
