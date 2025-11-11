@@ -103,7 +103,46 @@ public ArrayList<Token> tokens;
         if(Math.isWhiteSpace(in))return TokenType.whitespace;
         else return TokenType.special;
     }
-    private void clean(){}
+    private void clean(){
+        ArrayList<Token> temp = new ArrayList<>();
+        boolean isString = false;
+        boolean isComment = false;
+        boolean backslashParody = false; 
+        for(int i = 0; i < tokens.size(); i++){
+            Token token = tokens.get(i);
+            if(token.type == TokenType.whitespace) continue;
+            if(token.type != TokenType.special)temp.add(token);
+            if(token.data.equals("`")){
+                /*this is a multi line comment
+                 * if in string add to temp
+                 * else loop through the tokens tracking nesting dropping whole comment 
+                 */
+            }
+            else if(token.data.equals("~")){
+                /*this is a single line comment
+                 *  if in string add to temp
+                 * else loop through the rest of line and drop
+                 */
+            }
+            else if(token.data.equals("\"") || token.data.equals("'")){
+                /*this is a string or a char
+                 * this can not be in a comment
+                 * if in backslash ignore
+                 * else flip string bit and add to temp
+                 */
+            }
+            else if(token.data.equals("\\")){
+                /*this can not be in a comment
+                 * flip backslash parody bit and add to temp
+                 */
+            }
+            else{
+                /*this is some other special char 
+                 * add to temp
+                 */
+            }
+        }
+    }
     private void combineStrings(){}
     private void combineOperators(){}
     public Error parser(){return Error.__NO_ERROR__;}
@@ -113,3 +152,12 @@ public ArrayList<Token> tokens;
     public Error assembler(){return Error.__NO_ERROR__;}
 
 }
+
+/**** DEFINED PARTS OF THE LANGUAGE ****
+ * ~ single line comment
+ * ` multi line, partial line, and nested comments
+ * " string
+ * ' char
+ * 
+ * 
+ */
