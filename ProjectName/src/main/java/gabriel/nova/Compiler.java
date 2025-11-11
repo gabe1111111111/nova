@@ -34,11 +34,17 @@ public ArrayList<Token> tokens;
     }
     public Error preProcessor(){return Error.__NO_ERROR__;}
     public Error lexer(){
+        addWhitespace();
         tokenize();
         clean();
         combineStrings();
         combineOperators();
         return Error.__NO_ERROR__;
+    }
+    private void addWhitespace(){
+        for(int i = 0; i < sourceCode.size(); i++){
+            sourceCode.replace(sourceCode.get(i) + "\n", i);
+        }
     }
     private void tokenize(){
         String token = "";
