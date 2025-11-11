@@ -12,8 +12,8 @@ public class Tests {
         if(error != Error.__NO_ERROR__) System.out.println(error);
         error = compiler.lexer();
         if(error != Error.__NO_ERROR__) System.out.println(error);
-        for(String i : compiler.sourceCode){
-            System.out.println(i);
+        for(Token i : compiler.tokens){
+            System.out.println(i.data);
         }
         System.out.println(compiler.loadProgram("doesNotExist.txt"));
     }
