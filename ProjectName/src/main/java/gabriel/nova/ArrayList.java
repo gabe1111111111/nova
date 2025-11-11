@@ -119,4 +119,12 @@ public class ArrayList<T> implements Iterable<T> {
     public int size(){
         return size;
     }
+    /**
+     *replaces the data at index with addend 
+     * @param addend what to replace with 
+     *@param index where to replace
+     */
+    public void replace(T addend, int index){
+        data[index] = addend;
+    }
 }
