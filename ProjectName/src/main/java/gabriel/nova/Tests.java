@@ -10,6 +10,8 @@ public class Tests {
         Compiler compiler = new Compiler();
         Error error = compiler.loadProgram("ProjectName\\test.txt");
         if(error != Error.__NO_ERROR__) System.out.println(error);
+        error = compiler.lexer();
+        if(error != Error.__NO_ERROR__) System.out.println(error);
         for(String i : compiler.sourceCode){
             System.out.println(i);
         }
