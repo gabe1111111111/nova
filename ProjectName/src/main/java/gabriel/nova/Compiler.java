@@ -17,6 +17,7 @@ public ArrayList<Token> tokens;
 
     public Compiler() {
     sourceCode = new ArrayList<>();
+    tokens = new ArrayList<>();
     }
     public Error loadProgram(String directory){
         try (BufferedReader reader = new BufferedReader(new FileReader(directory))) {
