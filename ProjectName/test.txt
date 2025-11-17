@@ -1,4 +1,19 @@
-line 1
-line 2
-line 3
-[({})] []';./
+~this is a comment
+this is not
+`~this is a partial line comment~` this is after
+`~this isa
+multiLine
+comment~`
+"string"
+"~comment in string"
+~"string in comment"
+~'char in comment'
+
+
+
+\"~this is a comment in a non string"
+\\"~this is a comment in a non non string"
+\\\"~3"
+\\\\"~4"
+\\\\\"~5"
+\\\\\\"~6"

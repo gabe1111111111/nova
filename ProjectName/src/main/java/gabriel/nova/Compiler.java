@@ -37,7 +37,8 @@ public ArrayList<Token> tokens;
     public Error lexer(){
         addWhitespace();
         tokenize();
-        clean();
+        Error error = clean();
+        if(error != Error.__NO_ERROR__)return error;
         combineStrings();
         combineOperators();
         return Error.__NO_ERROR__;
@@ -103,45 +104,80 @@ public ArrayList<Token> tokens;
         if(Math.isWhiteSpace(in))return TokenType.whitespace;
         else return TokenType.special;
     }
-    private void clean(){
+    private Error clean(){
         ArrayList<Token> temp = new ArrayList<>();
         boolean isString = false;
-        boolean isComment = false;
         boolean backslashParody = false; 
         for(int i = 0; i < tokens.size(); i++){
             Token token = tokens.get(i);
             if(token.type == TokenType.whitespace) continue;
             if(token.type != TokenType.special)temp.add(token);
             if(token.data.equals("`")){
+                backslashParody = false;
                 /*this is a multi line comment
                  * if in string add to temp
                  * else loop through the tokens tracking nesting dropping whole comment 
                  */
+            int tokensSize = tokens.size();
+            if(i+1 >= tokensSize) return Error.__NO_ERROR__;
+            if(!tokens.get(i+1).data.equals("~")){
+                    temp.add(token);
+                    continue;
+                }
+                
+                if(isString) temp.add(token);
+                else{
+
+                    int commentTracker = 1;
+                    while(commentTracker < 0){
+                        if(i+1 >= tokensSize)return Error.__SYNTAX_ERROR_INCOMPLETE_COMMENT__;
+                        if(tokens.get(i).data.equals("`")&&tokens.get(i+1).data.equals("~"))commentTracker++;
+                        if(tokens.get(i).data.equals("~")&&tokens.get(i+1).data.equals("`"))commentTracker--;
+                        i++;
+                    }
+                }
             }
             else if(token.data.equals("~")){
+                backslashParody = false;
                 /*this is a single line comment
                  *  if in string add to temp
                  * else loop through the rest of line and drop
                  */
+                if(isString)continue;
+                int lineToSkip = token.line;
+                int tokensSize = tokens.size();
+                while(tokens.get(i).line != lineToSkip){
+                    if(i >= tokensSize)return Error.__NO_ERROR__;
+                    i++;
+                }
             }
             else if(token.data.equals("\"") || token.data.equals("'")){
+                backslashParody = false;
                 /*this is a string or a char
                  * this can not be in a comment
                  * if in backslash ignore
                  * else flip string bit and add to temp
                  */
+                if(backslashParody)continue;
+                isString = !isString;
+                temp.add(token);
             }
             else if(token.data.equals("\\")){
                 /*this can not be in a comment
                  * flip backslash parody bit and add to temp
                  */
+                backslashParody = !backslashParody;
+                temp.add(token);
             }
             else{
+                backslashParody = false;
                 /*this is some other special char 
                  * add to temp
                  */
+                temp.add(token);
             }
         }
+        return Error.__NO_ERROR__;
     }
     private void combineStrings(){}
     private void combineOperators(){}
@@ -155,7 +191,7 @@ public ArrayList<Token> tokens;
 
 /**** DEFINED PARTS OF THE LANGUAGE ****
  * ~ single line comment
- * ` multi line, partial line, and nested comments
+ * `~ ~` multi line, partial line, and nested comments
  * " string
  * ' char
  * 
