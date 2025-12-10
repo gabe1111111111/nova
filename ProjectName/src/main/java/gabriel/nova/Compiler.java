@@ -204,7 +204,30 @@ public ArrayList<Token> tokens;
         tokens = temp;
         return Error.__NO_ERROR__;
     }
-    private void combineStrings(){}
+    private Error combineStrings(){
+        ArrayList<Token> temp = new ArrayList<Token>();
+        for (int i = 0; i < this.tokens.size(); i++){
+            Token token = tokens.get(i);
+            if(token.data.equals("\"")){
+                String accumulator = "\"";
+                try{
+                    int start = i;
+                    i++;
+                    while(!this.tokens.get(i).data.equals("\"")){
+                        accumulator += this.tokens.get(i).data;
+                        i++;
+                    }
+                    Token newTokenForString = tokens.get(start);
+                    newTokenForString.data = accumulator;
+                    temp.add(newTokenForString);
+                }
+                catch(IndexOutOfBoundsException e){return Error.__SYNTAX_ERROR_INCOMPLETE_STRING__;}
+                
+            }
+        }
+        this.tokens = temp;
+        return Error.__NO_ERROR__;
+    }
     private void combineOperators(){}
     public Error parser(){return Error.__NO_ERROR__;}
     public Error codeGeneration(){return Error.__NO_ERROR__;}
@@ -219,7 +242,7 @@ public ArrayList<Token> tokens;
 
 /**** DEFINED PARTS OF THE LANGUAGE ****
  * ~ single line comment
- * `~ ~` multi line, partial line, and nested comments
+ * `~~` multi line, partial line, and nested comments
  * " string
  * ' char
  * 
